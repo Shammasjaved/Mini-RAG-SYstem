@@ -89,7 +89,7 @@ class MovieRAG:
         q /= (np.linalg.norm(q) + 1e-9)
         D, I = self.index.search(q.reshape(1,-1).astype(np.float32), self.top_k)
         ids = I[0].tolist()
-        return [f"{self.titles[i]} … {self.chunks[i][:350]}" for i in ids]
+        return [f"{self.titles[i]} … {self.chunks[i][:500]}" for i in ids]
 
     # - Generation 
     def answer(self, question: str, contexts: List[str]) -> Dict[str, str]:
